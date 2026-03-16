@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-brand-yellow: #FFD700;
+  --color-brand-yellow-hover: #E6C200;
+  --color-brand-dark: #121212;
+  --color-brand-darker: #0A0A0A;
+  --color-brand-light: #F9FAFB;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-light text-brand-dark antialiased transition-colors duration-300;
+  }
+  
+  .dark body {
+    @apply bg-brand-darker text-brand-light;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+}
+
+/* Custom scrollbar for a polished look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full dark:bg-gray-700;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-600;
+}
