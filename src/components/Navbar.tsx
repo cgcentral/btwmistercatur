@@ -1,34 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Moon, Sun, PlaySquare } from 'lucide-react';
+import { Menu, X, PlaySquare, ChevronDown, BookOpen, Handshake, Play, ShoppingBag, Briefcase } from 'lucide-react';
 import { cn } from '../utils/cn';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDark, setIsDark] = useState(true);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const location = useLocation();
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Default to dark mode for entertainment vibe
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDark]);
+    // Force dark mode
+    document.documentElement.classList.add('dark');
+  }, []);
 
-  const toggleDark = () => setIsDark(!isDark);
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const navLinks = [
     { name: 'Beranda', path: '/' },
     { name: 'Tentang Kami', path: '/about' },
-    { name: 'Content', path: '/content' },
-    { name: 'Media Partnership', path: '/contact' },
+    { name: 'Merchandise', path: '/merchandise' },
+    { name: 'Career', path: '/career' },
+  ];
+
+  const dropdownItems = [
+    { name: 'Video & Artikel', path: '/content', icon: <Play className="w-4 h-4" />, desc: 'Tonton episode terbaru' },
+    { name: 'E-Course', path: '/e-course', icon: <BookOpen className="w-4 h-4" />, desc: 'Belajar strategi catur' },
+    { name: 'Media Partnership', path: '/contact', icon: <Handshake className="w-4 h-4" />, desc: 'Jalin kolaborasi' },
   ];
 
   return (
-    <nav className="fixed w-full z-50 top-0 transition-all duration-300 bg-white/80 dark:bg-brand-darker/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+    <nav className="fixed w-full z-50 top-0 transition-all duration-300 bg-brand-darker/80 backdrop-blur-md border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           <div className="flex items-center">
@@ -36,7 +48,7 @@ export default function Navbar() {
               <div className="w-10 h-10 bg-brand-yellow rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform">
                 <PlaySquare className="text-black w-6 h-6" />
               </div>
-              <span className="font-display font-black text-xl tracking-tight">
+              <span className="font-display font-black text-xl tracking-tight text-white">
                 BTW <span className="text-brand-yellow">Mister Catur</span>
               </span>
             </Link>
@@ -44,45 +56,78 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
+            {navLinks.slice(0, 2).map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
                 className={cn(
                   "text-sm font-semibold transition-colors hover:text-brand-yellow",
-                  location.pathname === link.path 
-                    ? "text-brand-yellow" 
-                    : "text-gray-600 dark:text-gray-300"
+                  location.pathname === link.path ? "text-brand-yellow" : "text-gray-300"
+                )}
+              >
+                {link.name}
+              </Link>
+            ))}
+
+            {/* Dropdown Content */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className={cn(
+                  "flex items-center gap-1 text-sm font-semibold transition-colors hover:text-brand-yellow",
+                  isDropdownOpen || dropdownItems.some(i => location.pathname === i.path) ? "text-brand-yellow" : "text-gray-300"
+                )}
+              >
+                Content <ChevronDown className={cn("w-4 h-4 transition-transform", isDropdownOpen && "rotate-180")} />
+              </button>
+
+              {isDropdownOpen && (
+                <div className="absolute top-full left-0 mt-2 w-72 bg-brand-dark border border-gray-800 rounded-2xl shadow-2xl p-4 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="space-y-2">
+                    {dropdownItems.map((item) => (
+                      <Link
+                        key={item.name}
+                        to={item.path}
+                        onClick={() => setIsDropdownOpen(false)}
+                        className="flex items-start gap-4 p-3 rounded-xl hover:bg-gray-800 transition-colors group"
+                      >
+                        <div className="w-10 h-10 bg-brand-yellow/10 rounded-lg flex items-center justify-center text-brand-yellow group-hover:bg-brand-yellow group-hover:text-black transition-colors">
+                          {item.icon}
+                        </div>
+                        <div>
+                          <div className="text-sm font-bold text-white">{item.name}</div>
+                          <div className="text-xs text-gray-500">{item.desc}</div>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {navLinks.slice(2).map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className={cn(
+                  "text-sm font-semibold transition-colors hover:text-brand-yellow",
+                  location.pathname === link.path ? "text-brand-yellow" : "text-gray-300"
                 )}
               >
                 {link.name}
               </Link>
             ))}
             
-            <button
-              onClick={toggleDark}
-              className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-              aria-label="Toggle Dark Mode"
-            >
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
-
-            <button className="bg-brand-yellow hover:bg-brand-yellow-hover text-black font-bold py-2.5 px-6 rounded-full transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(255,215,0,0.3)]">
-              Login
-            </button>
+            <Link to="/contact" className="bg-brand-yellow hover:bg-brand-yellow-hover text-black font-bold py-2.5 px-6 rounded-full transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(255,215,0,0.3)]">
+              Contact Us
+            </Link>
           </div>
 
           {/* Mobile menu button */}
-          <div className="flex items-center md:hidden gap-4">
-            <button
-              onClick={toggleDark}
-              className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300"
-            >
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
+          <div className="flex items-center md:hidden">
             <button
               onClick={toggleMenu}
-              className="text-gray-600 dark:text-gray-300 hover:text-brand-yellow focus:outline-none"
+              className="text-gray-300 hover:text-brand-yellow focus:outline-none"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -92,27 +137,54 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white dark:bg-brand-darker border-b border-gray-200 dark:border-gray-800 absolute w-full">
+        <div className="md:hidden bg-brand-darker border-b border-gray-800 absolute w-full">
           <div className="px-4 pt-2 pb-6 space-y-1">
-            {navLinks.map((link) => (
+            {navLinks.slice(0, 2).map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
                 className={cn(
                   "block px-3 py-4 rounded-md text-base font-semibold",
-                  location.pathname === link.path
-                    ? "bg-gray-50 dark:bg-gray-900 text-brand-yellow"
-                    : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+                  location.pathname === link.path ? "text-brand-yellow" : "text-gray-300"
                 )}
               >
                 {link.name}
               </Link>
             ))}
+            
+            <div className="py-2 px-3 space-y-2">
+              <div className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Content</div>
+              {dropdownItems.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-3 py-3 text-gray-300 hover:text-brand-yellow"
+                >
+                  {item.icon} {item.name}
+                </Link>
+              ))}
+            </div>
+
+            {navLinks.slice(2).map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                onClick={() => setIsOpen(false)}
+                className={cn(
+                  "block px-3 py-4 rounded-md text-base font-semibold",
+                  location.pathname === link.path ? "text-brand-yellow" : "text-gray-300"
+                )}
+              >
+                {link.name}
+              </Link>
+            ))}
+
             <div className="pt-4 px-3">
-              <button className="w-full bg-brand-yellow hover:bg-brand-yellow-hover text-black font-bold py-3 rounded-xl transition-colors">
-                Login dengan Google
-              </button>
+              <Link to="/contact" onClick={() => setIsOpen(false)} className="block w-full bg-brand-yellow text-center text-black font-bold py-3 rounded-xl">
+                Contact Us
+              </Link>
             </div>
           </div>
         </div>
