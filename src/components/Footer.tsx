@@ -4,30 +4,47 @@ import { PlaySquare, Instagram, Youtube, Twitter, MessageCircle } from 'lucide-r
 
 export default function Footer() {
   return (
-    <footer className="bg-white dark:bg-brand-darker border-t border-gray-200 dark:border-gray-800 pt-16 pb-8">
+    <footer className="bg-white dark:bg-brand-darker border-t border-brand-blue/20 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-brand-yellow rounded-xl flex items-center justify-center">
-                <PlaySquare className="text-black w-6 h-6" />
+              <div className="w-10 h-10 bg-brand-blue rounded-xl flex items-center justify-center shadow-[0_0_15px_rgba(0,74,173,0.3)]">
+                <PlaySquare className="text-white w-6 h-6" />
               </div>
               <span className="font-display font-black text-xl tracking-tight text-gray-900 dark:text-white">
-                BTW <span className="text-brand-yellow">Mister Catur</span>
+                BTW
               </span>
             </Link>
             <p className="text-gray-600 dark:text-gray-400 max-w-sm mb-6 leading-relaxed">
               Skakmat Kebosanan, Nyalakan Strategi. Platform edutainment catur yang santai, modern, dan interaktif.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-brand-yellow hover:text-black transition-colors">
+              <a 
+                href="https://youtube.com/@btw_breaktimewith?si=X5O8NY3Agvsma_OP" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-brand-blue hover:text-white transition-colors"
+              >
                 <Youtube className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-brand-yellow hover:text-black transition-colors">
+              <a 
+                href="https://www.instagram.com/btwmistercatur/?hl=en" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-brand-blue hover:text-white transition-colors"
+              >
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-brand-yellow hover:text-black transition-colors">
-                <MessageCircle className="w-5 h-5" /> {/* TikTok/WA icon placeholder */}
+              <a 
+                href="https://www.tiktok.com/@btw_breaktimewith?_r=1&_t=ZS-94EapcAPEjH" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-brand-blue hover:text-white transition-colors"
+              >
+                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z"/>
+                </svg>
               </a>
             </div>
           </div>
@@ -36,7 +53,6 @@ export default function Footer() {
             <h3 className="font-display font-bold text-lg mb-6 text-gray-900 dark:text-white">Eksplorasi</h3>
             <ul className="space-y-4">
               <li><Link to="/about" className="text-gray-600 dark:text-gray-400 hover:text-brand-yellow transition-colors">Tentang Kami</Link></li>
-              <li><Link to="/content" className="text-gray-600 dark:text-gray-400 hover:text-brand-yellow transition-colors">Content Hub</Link></li>
               <li><Link to="/contact" className="text-gray-600 dark:text-gray-400 hover:text-brand-yellow transition-colors">Media Partnership</Link></li>
             </ul>
           </div>
@@ -44,9 +60,9 @@ export default function Footer() {
           <div>
             <h3 className="font-display font-bold text-lg mb-6 text-gray-900 dark:text-white">Lainnya</h3>
             <ul className="space-y-4">
-              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-brand-yellow transition-colors">E-Course</a></li>
-              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-brand-yellow transition-colors">Merchandise</a></li>
-              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-brand-yellow transition-colors">Career</a></li>
+              <li><Link to="/e-course" className="text-gray-600 dark:text-gray-400 hover:text-brand-yellow transition-colors">E-Course</Link></li>
+              <li><Link to="/merchandise" className="text-gray-600 dark:text-gray-400 hover:text-brand-yellow transition-colors">Merchandise</Link></li>
+              <li><Link to="/career" className="text-gray-600 dark:text-gray-400 hover:text-brand-yellow transition-colors">Career</Link></li>
             </ul>
           </div>
         </div>

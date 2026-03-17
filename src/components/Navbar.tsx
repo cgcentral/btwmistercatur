@@ -29,27 +29,27 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Beranda', path: '/' },
     { name: 'Tentang Kami', path: '/about' },
-    { name: 'Merchandise', path: '/merchandise' },
+    { name: 'Media Partnership', path: '/contact' },
     { name: 'Career', path: '/career' },
   ];
 
   const dropdownItems = [
-    { name: 'Video & Artikel', path: '/content', icon: <Play className="w-4 h-4" />, desc: 'Tonton episode terbaru' },
+    { name: 'Video Content', path: '/content', icon: <Play className="w-4 h-4" />, desc: 'Tonton episode terbaru' },
     { name: 'E-Course', path: '/e-course', icon: <BookOpen className="w-4 h-4" />, desc: 'Belajar strategi catur' },
-    { name: 'Media Partnership', path: '/contact', icon: <Handshake className="w-4 h-4" />, desc: 'Jalin kolaborasi' },
+    { name: 'Merchandise', path: '/merchandise', icon: <ShoppingBag className="w-4 h-4" />, desc: 'Koleksi eksklusif' },
   ];
 
   return (
-    <nav className="fixed w-full z-50 top-0 transition-all duration-300 bg-brand-darker/80 backdrop-blur-md border-b border-gray-800">
+    <nav className="fixed w-full z-50 top-0 transition-all duration-300 bg-brand-darker/80 backdrop-blur-md border-b border-brand-blue/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           <div className="flex items-center">
             <Link to="/" className="flex items-center gap-2 group">
-              <div className="w-10 h-10 bg-brand-yellow rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform">
-                <PlaySquare className="text-black w-6 h-6" />
+              <div className="w-10 h-10 bg-brand-blue rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform shadow-[0_0_15px_rgba(0,74,173,0.4)]">
+                <PlaySquare className="text-white w-6 h-6" />
               </div>
               <span className="font-display font-black text-xl tracking-tight text-white">
-                BTW <span className="text-brand-yellow">Mister Catur</span>
+                BTW
               </span>
             </Link>
           </div>
@@ -78,7 +78,7 @@ export default function Navbar() {
                   isDropdownOpen || dropdownItems.some(i => location.pathname === i.path) ? "text-brand-yellow" : "text-gray-300"
                 )}
               >
-                Content <ChevronDown className={cn("w-4 h-4 transition-transform", isDropdownOpen && "rotate-180")} />
+                Products <ChevronDown className={cn("w-4 h-4 transition-transform", isDropdownOpen && "rotate-180")} />
               </button>
 
               {isDropdownOpen && (
@@ -118,7 +118,7 @@ export default function Navbar() {
               </Link>
             ))}
             
-            <Link to="/contact" className="bg-brand-yellow hover:bg-brand-yellow-hover text-black font-bold py-2.5 px-6 rounded-full transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(255,215,0,0.3)]">
+            <Link to="/contact" className="bg-brand-yellow hover:bg-brand-yellow-hover text-black font-bold py-2.5 px-6 rounded-full transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(255,215,0,0.3)] border border-brand-blue/20">
               Contact Us
             </Link>
           </div>
@@ -154,7 +154,7 @@ export default function Navbar() {
             ))}
             
             <div className="py-2 px-3 space-y-2">
-              <div className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Content</div>
+              <div className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Products</div>
               {dropdownItems.map((item) => (
                 <Link
                   key={item.name}

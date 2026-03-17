@@ -23,7 +23,7 @@ export default function About() {
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-6xl font-black text-white mb-6"
           >
-            Tentang <span className="text-brand-yellow">Kami</span>
+            Tentang <span className="text-brand-blue-bright">Kami</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -37,24 +37,24 @@ export default function About() {
       </section>
 
       {/* Story Section */}
-      <section className="py-24 bg-white dark:bg-brand-darker">
+      <section className="py-16 md:py-24 bg-white dark:bg-brand-darker">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="space-y-6"
+              className="space-y-4"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
                 Skakmat Kebosanan, Nyalakan Strategi.
               </h2>
-              <div className="w-20 h-2 bg-brand-yellow rounded-full"></div>
-              <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                Di balik setiap langkah bidak, ada cerita, strategi, dan filosofi. BTW (Break Time With) Mister Catur lahir dari sebuah visi sederhana: menjadikan catur bukan sekadar permainan papan yang kaku, melainkan teman setia di waktu istirahat Anda.
+              <div className="w-20 h-1.5 bg-brand-blue rounded-full shadow-[0_0_10px_rgba(0,74,173,0.5)]"></div>
+              <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed pt-2">
+                Break Time With (BTW) Mister Catur adalah platform media profesional yang didedikasikan untuk menyajikan konten mendalam seputar dunia Bisnis, Motivasi, dan nilai-nilai Spiritual/Agama. Kami hadir sebagai oase bagi para profesional dan individu yang mencari keseimbangan antara kesuksesan karir dan ketenangan batin.
               </p>
               <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                Dipandu oleh Mister Catur, kami hadir sebagai wadah bagi para pecinta catur di Indonesia—mulai dari mereka yang baru mengenal cara melangkah, hingga para pemain strategis yang ingin mengasah ketajaman analisis.
+                Melalui pendekatan yang edukatif dan inspiratif, kami mengintegrasikan strategi bisnis yang jujur dengan motivasi yang membumi, serta landasan spiritual yang menenangkan. Kami percaya bahwa pertumbuhan sejati terjadi ketika aspek intelektual dan spiritual berjalan beriringan.
               </p>
             </motion.div>
             
@@ -66,15 +66,15 @@ export default function About() {
             >
               <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800">
                 <img 
-                  src="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?q=80&w=2071&auto=format&fit=crop" 
-                  alt="Chess Board" 
+                  src="http://btwmistercatur.com/wp-content/uploads/2026/02/images_2722491769586762089.png" 
+                  alt="Mister Catur Profile" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <div className="absolute -bottom-8 -left-8 bg-brand-yellow p-8 rounded-3xl shadow-xl max-w-xs hidden md:block">
-                <p className="text-black font-bold text-xl leading-tight">
-                  "Catur adalah bahasa universal untuk melatih logika dan kesabaran."
+              <div className="absolute -bottom-8 -left-8 bg-brand-blue p-8 rounded-3xl shadow-xl max-w-xs hidden md:block border border-white/10">
+                <p className="text-white font-bold text-xl leading-tight">
+                  "Strategi dalam bisnis, ketangguhan dalam motivasi, dan kedamaian dalam spiritualitas adalah pilar hidup yang seimbang."
                 </p>
               </div>
             </motion.div>
@@ -88,26 +88,26 @@ export default function About() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">Mengapa BTW Mister Catur?</h2>
             <p className="text-gray-600 dark:text-gray-400 text-lg">
-              Kami percaya bahwa catur adalah bahasa universal untuk melatih logika dan kesabaran. Melalui konten yang edukatif namun tetap menghibur, kami meruntuhkan batasan bahwa catur itu "berat".
+              Kami menyajikan konten berkualitas yang dirancang untuk memperluas wawasan dan memperkuat karakter melalui tiga pilar utama.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: <Zap className="w-8 h-8 text-brand-yellow" />,
-                title: "Edutainment yang Seru",
-                desc: "Kami mengemas teori dan taktik catur dengan cara yang ringan, sehingga Anda bisa belajar sambil menikmati waktu 'break' Anda."
+                icon: <Zap className="w-8 h-8 text-brand-blue" />,
+                title: "Wawasan Bisnis Profesional",
+                desc: "Kami membedah tren bisnis modern dengan fokus pada integritas, etika, dan strategi jangka panjang yang berkelanjutan."
               },
               {
-                icon: <Users className="w-8 h-8 text-brand-yellow" />,
-                title: "Komunitas Inklusif",
-                desc: "Di sini, tidak ada langkah yang salah untuk belajar. Kami merangkul setiap pion yang ingin bertransformasi menjadi menteri."
+                icon: <Users className="w-8 h-8 text-brand-blue" />,
+                title: "Motivasi yang Membumi",
+                desc: "Konten motivasi kami dirancang secara praktis dan relevan dengan tantangan hidup nyata, mendorong pertumbuhan pribadi yang konsisten."
               },
               {
-                icon: <Target className="w-8 h-8 text-brand-yellow" />,
-                title: "Analisis Tajam, Gaya Santai",
-                desc: "Mister Catur membawa pengalaman dan perspektif unik dalam membedah setiap pertandingan, menjadikannya mudah dipahami tanpa menghilangkan kedalaman strategi."
+                icon: <Target className="w-8 h-8 text-brand-blue" />,
+                title: "Kedalaman Spiritual",
+                desc: "Kami menyediakan ruang untuk refleksi dan pertumbuhan spiritual, mengintegrasikan nilai-nilai agama ke dalam dinamika kehidupan sehari-hari."
               }
             ].map((item, idx) => (
               <motion.div 
@@ -116,9 +116,9 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.2 }}
-                className="bg-white dark:bg-gray-900 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 hover:shadow-xl transition-shadow"
+                className="bg-white dark:bg-gray-900 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 hover:border-brand-blue/50 hover:shadow-xl transition-all"
               >
-                <div className="w-16 h-16 bg-brand-yellow/10 rounded-2xl flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-brand-blue/10 rounded-2xl flex items-center justify-center mb-6">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">{item.title}</h3>
@@ -136,18 +136,18 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Misi Kami</h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-16 leading-relaxed">
-            Misi kami adalah memasyarakatkan catur di era digital. Melalui platform ini, kami ingin membangun ekosistem di mana setiap orang bisa meningkatkan kapasitas berpikir mereka, satu langkah Langkah Kuda di satu waktu.
+            Misi kami adalah memberdayakan individu melalui konten edutainment berkualitas tinggi yang menjembatani kesuksesan profesional dengan kesejahteraan spiritual, menciptakan dampak positif bagi masyarakat luas.
           </p>
         </div>
       </section>
 
       {/* Closing CTA */}
-      <section className="py-24 bg-brand-yellow text-center">
+      <section className="py-24 bg-brand-blue text-center">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-black mb-8 leading-tight">
-            Mari beristirahat sejenak, siapkan kopi Anda, dan mari susun strategi bersama Mister Catur.
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 leading-tight">
+            Mari melangkah bersama dalam perjalanan menuju kesuksesan yang bermakna dan kehidupan yang penuh berkah.
           </h2>
-          <div className="w-24 h-1 bg-black mx-auto rounded-full"></div>
+          <div className="w-24 h-1 bg-brand-yellow mx-auto rounded-full"></div>
         </div>
       </section>
     </div>
