@@ -9,16 +9,24 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-brand-blue rounded-xl flex items-center justify-center shadow-[0_0_15px_rgba(0,74,173,0.3)]">
-                <PlaySquare className="text-white w-6 h-6" />
-              </div>
-              <span className="font-display font-black text-xl tracking-tight text-gray-900 dark:text-white">
-                BTW
-              </span>
+              <img 
+                src="http://btwmistercatur.com/wp-content/uploads/2026/03/BTW-MISTER-CATUR-AND-FRIENDS-REV-2-1-scaled.png" 
+                alt="BTW Mister Catur Logo" 
+                className="h-12 w-auto object-contain"
+                referrerPolicy="no-referrer"
+              />
             </Link>
-            <p className="text-gray-600 dark:text-gray-400 max-w-sm mb-6 leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-400 max-w-sm mb-4 leading-relaxed">
               Skakmat Kebosanan, Nyalakan Strategi. Platform edutainment catur yang santai, modern, dan interaktif.
             </p>
+            <a 
+              href="https://www.google.com/maps/search/?api=1&query=Jl.+Ciputat+Raya+No.1b,+RT.1/RW.8,+Pd.+Pinang,+Kec.+Kebayoran+Lama,+Kota+Jakarta+Selatan,+Daerah+Khusus+Ibukota+Jakarta+12310"
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-500 dark:text-gray-500 hover:text-brand-yellow transition-colors text-sm block mb-6 leading-relaxed"
+            >
+              Jl. Ciputat Raya No.1b, RT.1/RW.8, Pd. Pinang, Kec. Kebayoran Lama, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12310
+            </a>
             <div className="flex space-x-4">
               <a 
                 href="https://youtube.com/@btw_breaktimewith?si=X5O8NY3Agvsma_OP" 

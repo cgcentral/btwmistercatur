@@ -45,12 +45,12 @@ export default function Navbar() {
         <div className="flex justify-between h-20">
           <div className="flex items-center">
             <Link to="/" className="flex items-center gap-2 group">
-              <div className="w-10 h-10 bg-brand-blue rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform shadow-[0_0_15px_rgba(0,74,173,0.4)]">
-                <PlaySquare className="text-white w-6 h-6" />
-              </div>
-              <span className="font-display font-black text-xl tracking-tight text-white">
-                BTW
-              </span>
+              <img 
+                src="http://btwmistercatur.com/wp-content/uploads/2026/03/BTW-MISTER-CATUR-AND-FRIENDS-REV-2-1-scaled.png" 
+                alt="BTW Mister Catur Logo" 
+                className="h-12 md:h-16 w-auto object-contain"
+                referrerPolicy="no-referrer"
+              />
             </Link>
           </div>
 

@@ -165,13 +165,13 @@ export default function Home() {
               </div>
               
               {/* Floating Badge */}
-              <div className="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 flex items-center gap-4 animate-bounce" style={{ animationDuration: '3s' }}>
+              <div className="absolute -bottom-6 lg:-bottom-12 -left-6 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 flex items-center gap-4 animate-bounce" style={{ animationDuration: '3s' }}>
                 <div className="w-12 h-12 bg-brand-blue/20 rounded-full flex items-center justify-center">
                   <Users className="w-6 h-6 text-brand-blue" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">Komunitas</p>
-                  <p className="text-lg font-bold text-gray-900 dark:text-white">10K+ Member</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">Subscribers</p>
+                  <p className="text-lg font-bold text-gray-900 dark:text-white">12K+</p>
                 </div>
               </div>
             </motion.div>
