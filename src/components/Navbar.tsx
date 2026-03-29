@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, PlaySquare, ChevronDown, BookOpen, Handshake, Play, ShoppingBag, Briefcase } from 'lucide-react';
+import { Menu, X, ChevronDown, BookOpen, ShoppingBag, Play } from 'lucide-react';
 import { cn } from '../utils/cn';
+import { useCart } from '../context/CartContext';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { totalItems } = useCart();
 
   useEffect(() => {
     // Force dark mode
@@ -118,13 +120,37 @@ export default function Navbar() {
               </Link>
             ))}
             
-            <Link to="/contact" className="bg-brand-yellow hover:bg-brand-yellow-hover text-black font-bold py-2.5 px-6 rounded-full transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(255,215,0,0.3)] border border-brand-blue/20">
-              Contact Us
-            </Link>
+            <div className="flex items-center gap-4">
+              <Link 
+                to="/cart" 
+                className="relative p-2 text-gray-300 hover:text-brand-yellow transition-colors"
+              >
+                <ShoppingBag className="w-6 h-6" />
+                {totalItems > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full border-2 border-brand-darker">
+                    {totalItems}
+                  </span>
+                )}
+              </Link>
+              <Link to="/contact" className="bg-brand-yellow hover:bg-brand-yellow-hover text-black font-bold py-2.5 px-6 rounded-full transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(255,215,0,0.3)] border border-brand-blue/20">
+                Contact Us
+              </Link>
+            </div>
           </div>
 
           {/* Mobile menu button */}
-          <div className="flex items-center md:hidden">
+          <div className="flex items-center gap-4 md:hidden">
+            <Link 
+              to="/cart" 
+              className="relative p-2 text-gray-300 hover:text-brand-yellow transition-colors"
+            >
+              <ShoppingBag className="w-6 h-6" />
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full border-2 border-brand-darker">
+                  {totalItems}
+                </span>
+              )}
+            </Link>
             <button
               onClick={toggleMenu}
               className="text-gray-300 hover:text-brand-yellow focus:outline-none"
