@@ -49,6 +49,29 @@ export default function Cart() {
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/6285121249997?text=${encodedMessage}`;
     
+    // GTM Purchase Event
+    if (typeof window !== 'undefined' && (window as any).dataLayer) {
+      (window as any).dataLayer.push({
+        event: 'purchase',
+        ecommerce: {
+          transaction_id: `T-${Date.now()}`,
+          value: totalPrice,
+          currency: 'IDR',
+          items: cart.map(item => ({
+            item_id: item.id,
+            item_name: item.name,
+            price: item.price,
+            item_variant: item.size,
+            quantity: item.quantity
+          }))
+        },
+        customer_info: {
+          name: formData.name,
+          phone: formData.phone
+        }
+      });
+    }
+
     window.open(whatsappUrl, '_blank');
   };
 

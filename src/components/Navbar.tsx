@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, BookOpen, ShoppingBag, Play } from 'lucide-react';
+import { Menu, X, ChevronDown, BookOpen, ShoppingBag, Play, Star } from 'lucide-react';
 import { cn } from '../utils/cn';
 import { useCart } from '../context/CartContext';
 
@@ -39,6 +39,7 @@ export default function Navbar() {
     { name: 'Video Content', path: '/content', icon: <Play className="w-4 h-4" />, desc: 'Tonton episode terbaru' },
     { name: 'E-Course', path: '/e-course', icon: <BookOpen className="w-4 h-4" />, desc: 'Belajar strategi catur' },
     { name: 'Merchandise', path: '/merchandise', icon: <ShoppingBag className="w-4 h-4" />, desc: 'Koleksi eksklusif' },
+    { name: 'Buku PSB', path: '/psb', icon: <Star className="w-4 h-4" />, desc: 'Pulang Sebelum Berlari' },
   ];
 
   return (

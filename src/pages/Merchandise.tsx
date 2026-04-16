@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { ShoppingBag, Check } from 'lucide-react';
+import { ShoppingBag, Check, ArrowRight } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 
@@ -83,6 +83,22 @@ export default function Merchandise() {
       img: product.img
     });
 
+    // GTM AddToCart Event
+    if (typeof window !== 'undefined' && (window as any).dataLayer) {
+      (window as any).dataLayer.push({
+        event: 'add_to_cart',
+        ecommerce: {
+          items: [{
+            item_id: product.id,
+            item_name: product.name,
+            price: product.price,
+            item_variant: selectedSizes[product.id],
+            quantity: 1
+          }]
+        }
+      });
+    }
+
     setAddedItems({ ...addedItems, [product.id]: true });
     setTimeout(() => {
       setAddedItems(prev => ({ ...prev, [product.id]: false }));
@@ -156,6 +172,15 @@ export default function Merchandise() {
               <div className="p-6 flex-grow flex flex-col">
                 <h3 className="text-xl font-bold mb-2">{item.name}</h3>
                 
+                {item.id === "buku-1" && (
+                  <Link 
+                    to="/psb" 
+                    className="text-xs text-brand-yellow hover:underline mb-4 flex items-center gap-1"
+                  >
+                    Lihat detail buku <ArrowRight className="w-3 h-3" />
+                  </Link>
+                )}
+
                 {item.sizes && (
                   <div className="mb-4">
                     <p className="text-sm text-gray-400 mb-2">Pilih Ukuran:</p>
