@@ -34,6 +34,14 @@ function AnalyticsTracker() {
           page_title: document.title
         });
       }
+
+      // GA4 gtag PageView
+      if ((window as any).gtag) {
+        (window as any).gtag('config', 'G-6X1CKGW3RL', {
+          page_path: location.pathname + location.search,
+          page_title: document.title
+        });
+      }
     }
   }, [location]);
 
