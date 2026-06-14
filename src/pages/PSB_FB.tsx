@@ -1,29 +1,30 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { CheckCircle2, MessageCircle, ArrowRight, Star, Quote, HelpCircle, Gift, ShoppingBag } from 'lucide-react';
+import { CheckCircle2, MessageCircle, ArrowRight, Star, Quote, HelpCircle, ShoppingBag } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import OrderOnlineEmbed from '../components/OrderOnlineEmbed';
 
 export default function PSB_FB() {
   const features = [
     {
-      title: "Mindset Shift",
-      desc: "Mengubah mindset lo dari sekadar 'Kerja Keras Mengejar Gaji' menjadi tahu persis apa Peran Sejati lo di dunia, yang bikin hidup lebih bermakna dan nggak gampang kosong."
+      title: "Identitas dari Langit",
+      desc: "Berhenti mengejar validasi semu. Temukan peran sejati yang telah dituliskan untuk Anda, agar setiap langkah bisnis dan karir memiliki makna abadi."
     },
     {
-      title: "Resilience Technique",
-      desc: "Teknik menghancurkan rasa gagal dan putus asa saat karir mentok atau bisnis hancur, dan mengubah cara pandang lo bahwa itu adalah didikan langsung dari Sang Sutradara."
+      title: "Resilience Level Tinggi",
+      desc: "Belajar dari pengalaman nyata mengelola omzet ratusan miliar hingga titik terendah. Strategi bangkit yang jujur, tanpa janji optimisme kosong."
     },
     {
-      title: "Marketing Langit",
-      desc: "Memiliki strategi 'Marketing Langit' yang bikin lo jadi prioritas (Top of Mind) di hadapan Tuhan, bukan sekadar hamba biasa yang doanya sering tertunda."
+      title: "Marketing & Branding Langit",
+      desc: "Jadilah 'Top of Mind-nya Allah'. Jika Sang Pencipta sudah memprioritaskan Anda, maka rezeki dan kemudahan akan datang melebihi perhitungan logika."
     },
     {
-      title: "Spiritual Psychology",
-      desc: "Rahasia psikologi spiritual untuk berhenti 'meng-cancel' doa lo sendiri (Percaya Tanpa Tapi), menyelaraskan pikiran dan perasaan untuk menarik rezeki dan kemudahan."
+      title: "Psikologi Doa (Subconscious)",
+      desc: "Memahami cara kerja pikiran bawah sadar (88% pengendali nasib) dan menyelaraskannya dengan energi doa untuk menarik hasil yang diinginkan."
     },
     {
-      title: "Consistency (Istiqomah)",
-      desc: "Cara elegan membangun konsistensi berprogres (Istiqomah): Bikin lo terus bertumbuh tanpa paksaan, bukan sekadar jalan di tempat atau rutinitas yang monoton."
+      title: "Gradual Increment (Istiqomah)",
+      desc: "Rahasia konsistensi atletis. Membangun kebiasaan 1% setiap hari yang terukur, hingga lelah Anda berubah menjadi keberkahan yang nyata."
     }
   ];
 
@@ -53,7 +54,7 @@ export default function PSB_FB() {
     },
     {
       q: "Apa saja yang saya dapatkan?",
-      a: "Anda akan mendapatkan Buku Pulang Sebelum Berlari dan Voucher Umroh 1JT khusus untuk Anda. *satu nama hanya untuk satu voucher."
+      a: "Anda akan mendapatkan Buku Pulang Sebelum Berlari yang siap membantu perjalanan pencarian jati diri Anda."
     },
     {
       q: "Apakah bisa daftar reseller?",
@@ -85,7 +86,7 @@ export default function PSB_FB() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-black leading-tight mb-8"
           >
-            Capek Gak Sih Hidup Lo <span className="text-brand-yellow">gini-gini Aja?</span>
+            Berhenti Sejenak Sebelum Anda <span className="text-brand-yellow">Kehabisan Waktu.</span>
           </motion.h1>
           
           <motion.p
@@ -94,7 +95,7 @@ export default function PSB_FB() {
             transition={{ delay: 0.2 }}
             className="text-xl md:text-2xl text-gray-400 mb-12 font-medium"
           >
-            Hidup Terasa Flat Hambar dan Ga Punya Arah? Jawaban yang selama ini lo cari ada disini..!
+            Menemukan Ketenangan, Makna Hidup, dan Keberlimpahan Melalui Prinsip "Hidup Taat, Sehat, & Manfaat".
           </motion.p>
 
           <motion.div
@@ -122,13 +123,13 @@ export default function PSB_FB() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-black mb-8">Pulang Sebelum Berlari</h2>
+              <h2 className="text-3xl font-black mb-8">Hidup Terasa Lelah Meski Bisnis Berjalan?</h2>
               <div className="space-y-6">
                 {[
-                  "Wajar aja selalu lelah meski pekerjaan terlihat baik-baik saja",
-                  "Wajar aja udah berusaha keras, tapi tetap merasa tidak ke mana-mana",
-                  "Wajar aja hidup hanya terasa rutinitas",
-                  "Sering bertanya dalam hati, \"Sebenarnya aku sedang mengejar apa?\""
+                  "Terjebak dalam rutinitas mengejar angka tanpa makna",
+                  "Bertanya dalam hati, \"Apa ini benar jalan yang Allah inginkan?\"",
+                  "Sukses materi sudah di tangan, tapi jiwa terasa kosong",
+                  "Ingin belajar bagaimana menjadi 'Wayang' yang dicintai sang Dalang"
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4 items-start">
                     <div className="mt-1 p-1 bg-red-500/20 rounded-full">
@@ -161,7 +162,7 @@ export default function PSB_FB() {
       <section className="py-24 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-black mb-4">Apa yang Akan Lo Pelajari?</h2>
+            <h2 className="text-4xl font-black mb-4">Apa yang Akan Anda Pelajari?</h2>
             <p className="text-gray-400 text-lg">Buku ini bukan sekadar teori, tapi panduan praktis untuk hidup lebih bermakna.</p>
           </div>
           
@@ -206,12 +207,12 @@ export default function PSB_FB() {
               />
             </div>
             <div className="w-full md:w-2/3">
-              <h2 className="text-3xl font-black mb-6">Siapa Mister Catur?</h2>
+              <h2 className="text-3xl font-black mb-6">Pesan dari Penulis</h2>
               <p className="text-lg text-gray-400 leading-relaxed mb-6">
-                Mister Catur adalah kreator di balik channel YouTube BTW (Breaktime With), yang aktif membagikan insight seputar bisnis, kehidupan, dan spiritualitas. Di masa pandemi, ia pernah menghadapi kebangkrutan dan kerugian bisnis yang besar.
+                "Bakti pada orang tua, sedekah tanpa tapi, dan menjaga amanah adalah mesin utama pertumbuhan bisnis yang barokah. Saya tuangkan formula jatuh-bangun saya di sini." — <strong>Mister Catur</strong>
               </p>
-              <p className="text-lg text-gray-400 leading-relaxed">
-                Namun, proses jatuh dan bangkit itulah yang membentuk perspektif barunya dalam melihat makna hidup, peran kita, dan cara menemukan ketenangan di tengah kekacauan—yang semuanya ia tuangkan secara jujur dalam buku ini.
+              <p className="text-lg text-gray-400 leading-relaxed font-bold text-brand-yellow">
+                Muhamad Catur Gunandi adalah pengusaha di balik CGLINK dengan rekam jejak omzet ratusan miliar, yang memilih berbagi makna melalui prinsip "Hidup Taat, Hidup Sehat, Hidup Manfaat".
               </p>
             </div>
           </div>
@@ -249,20 +250,6 @@ export default function PSB_FB() {
         </div>
       </section>
 
-      {/* Gift Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto bg-gradient-to-br from-brand-yellow to-yellow-600 rounded-[40px] p-12 text-black text-center relative overflow-hidden shadow-2xl">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 blur-[80px] rounded-full -mr-32 -mt-32" />
-          <Gift className="w-16 h-16 mx-auto mb-6" />
-          <h2 className="text-4xl font-black mb-4">Hadiah Spesial Untukmu</h2>
-          <p className="text-xl font-bold mb-8 opacity-90">FREE VOUCHER UMROH Rp 1 JUTA</p>
-          <p className="text-lg max-w-2xl mx-auto font-medium">
-            "Kenyamanan & ketenangan dalam setiap langkah menuju Baitullah"
-          </p>
-          <p className="text-xs mt-8 opacity-60">*Syarat dan ketentuan berlaku</p>
-        </div>
-      </section>
-
       {/* FAQ Section */}
       <section className="py-24 px-4 bg-brand-dark/30">
         <div className="max-w-3xl mx-auto">
@@ -285,7 +272,7 @@ export default function PSB_FB() {
       {/* Final CTA */}
       <section id="order" className="py-24 px-4 text-center">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black mb-12">Ingin bacaan yang menemani perjalanan pencarian dirimu?</h2>
+          <h2 className="text-4xl md:text-5xl font-black mb-12">Siap Melangkah Menuju Peran Sejati Anda?</h2>
           
           <div className="bg-brand-dark p-12 rounded-[40px] border border-gray-800 mb-12">
             <div className="flex flex-col md:flex-row justify-center gap-8 mb-12">
@@ -307,22 +294,19 @@ export default function PSB_FB() {
 
             <div className="mb-12">
               <p className="text-xl text-gray-400 mb-4">Harga Normal</p>
-              <p className="text-5xl font-black text-brand-yellow">Rp 169.000</p>
+              <p className="text-5xl font-black text-brand-yellow mb-12">Rp 169.000</p>
+              
+              <div className="max-w-xl mx-auto">
+                <OrderOnlineEmbed />
+              </div>
             </div>
 
-            <div className="flex flex-col gap-4 items-center">
-              <Link
-                to="/merchandise"
-                className="inline-flex items-center gap-3 px-12 py-6 bg-brand-yellow text-black rounded-2xl font-black text-xl hover:bg-white transition-all transform hover:scale-105 shadow-2xl shadow-brand-yellow/30"
-              >
-                Beli Sekarang Melalui Merchandise <ShoppingBag className="w-6 h-6" />
-              </Link>
-              
+            <div className="mt-12 flex flex-col gap-4 items-center">
               <a
                 href="https://wa.me/628131583298?text=Halo%20kak%20Saya%20mau%20tanya%20harga%20grosir%20Buku%20Pulang%20Sebelum%20Berlari%20nya"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-brand-yellow hover:underline flex items-center gap-2 font-bold mt-4"
+                className="text-brand-yellow hover:underline flex items-center gap-2 font-bold"
               >
                 📦 Spesial Harga Reseller! (Min. 5 Buku) <ArrowRight className="w-4 h-4" />
               </a>

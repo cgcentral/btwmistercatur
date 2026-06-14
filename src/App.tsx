@@ -13,6 +13,8 @@ import Career from './pages/Career';
 import Cart from './pages/Cart';
 import PSB from './pages/PSB';
 import PSB_FB from './pages/PSB_FB';
+import Checkout from './pages/Checkout';
+import OrderSuccess from './pages/OrderSuccess';
 import { CartProvider } from './context/CartContext';
 
 // Analytics Tracker Component (Meta Pixel & GTM)
@@ -66,6 +68,8 @@ export default function App() {
               <Route path="/merchandise" element={<Merchandise />} />
               <Route path="/career" element={<Career />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/order-success" element={<OrderSuccess />} />
               <Route path="/psb" element={<PSB />} />
               <Route path="/psb-fb" element={<PSB_FB />} />
             </Routes>

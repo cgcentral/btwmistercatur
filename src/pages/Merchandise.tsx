@@ -69,6 +69,11 @@ export default function Merchandise() {
   ];
 
   const handleAddToCart = (product: any) => {
+    if (product.id === 'buku-1') {
+      window.location.href = '/psb';
+      return;
+    }
+
     if (product.sizes && !selectedSizes[product.id]) {
       alert('Silakan pilih ukuran terlebih dahulu');
       return;

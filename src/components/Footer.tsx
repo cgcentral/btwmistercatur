@@ -31,7 +31,7 @@ export default function Footer() {
               </a>
               <div className="flex space-x-4">
                 <a 
-                  href="https://youtube.com/@btw_breaktimewith?si=X5O8NY3Agvsma_OP" 
+                  href="https://www.youtube.com/@btwmistercatur" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-brand-blue hover:text-white transition-colors"

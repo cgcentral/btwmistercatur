@@ -14,33 +14,40 @@ const CATEGORIES = [
 
 const VIDEO_DATA: Record<string, any[]> = {
   "Rubrik Bisnis": [
-    { id: "4l5BeOwRiG0", title: "Bingung Fokus Bisnis? Ini 10 Prinsip Orang Terkaya Dunia Biar Usaha Nggak Muter di Tempat", duration: "15:20", views: "25K" },
+    { id: "I4fQ6O_WloM", title: "Rahasia Sukses yang Tidak Pernah Diajarkan di Sekolah Bisnis", duration: "12:30", views: "24K" },
+    { id: "0Ouxl_9hccM", title: "Siapa Mister Catur? Mengenal Sosok di Balik Strategi Bisnis Ratusan Miliar", duration: "08:15", views: "10K" },
+    { id: "4l5BeOwRiG0", title: "Bingung Fokus Bisnis? Ini 10 Prinsip Bikin Usaha Nggak Muter di Tempat", duration: "15:20", views: "25K" },
     { id: "QVvrAhNt8Hk", title: "JANGAN SALAH ARAH! 6 Langkah Krusial Bangun Bisnis Dari NOL | Part 1", duration: "12:45", views: "18K" },
     { id: "TAr2lndT-qM", title: "99% GAGAL DI SINI: 6 Langkah Terakhir Bangun Bisnis Dari NOL | Part 2", duration: "14:10", views: "12K" },
     { id: "a81ReGVepN0", title: "Kenapa Bisnis Padel Bisa Hancur Total di 2026?", duration: "10:30", views: "30K" },
     { id: "QTEr-v_N9sc", title: "Bisnis Franchise Cuma FOMO?! Katanya Untung Gede Tapi...", duration: "11:50", views: "22K" },
   ],
   "Rubrik Motivasi": [
-    { id: "dVFAaIH-SkI", title: "Hidup Tanpa Privilege Gak Akan Sukses? Ini yang Harus Lo Lakuin!", duration: "13:15", views: "45K" },
+    { id: "IyUJv_7oEIA", title: "Jangan Mau Jadi Budak Perasaan! Bangkit dari Luka Masa Lalu", duration: "14:15", views: "29K" },
+    { id: "nBcl9u6H6I4", title: "Jangan Menyerah! Cara Bangkit Saat Berada di Titik Terendah", duration: "11:30", views: "15K" },
+    { id: "dVFAaIH-SkI", title: "Hidup Tanpa Privilege Gak Akan Sukses? Ini yang Harus Anda Lakukan!", duration: "13:15", views: "45K" },
     { id: "d8MK3swIuJk", title: "Surat untuk Diri Saya 20 Tahun Lalu: Tonton Sampai Habis!", duration: "09:40", views: "50K" },
     { id: "_Fvr7BiMdPc", title: "“Penyakit” Mental No. 1 Penyebab Hidupmu Gagal Bahagia, Kamu kah Salah Satunya?", duration: "16:20", views: "38K" },
   ],
   "Rubrik Spiritual": [
+    { id: "6_NiaBfS0mQ", title: "Menjadi 'Wayang' di Tangan Sang Dalang: Makna Tawakal yang Sesungguhnya", duration: "16:45", views: "32K" },
+    { id: "SDR-H20H60Q", title: "Rahasia Rejeki Bertubi-tubi: Koneksi Langit yang Sering Dilupakan", duration: "18:45", views: "40K" },
     { id: "TuLnL5D5loQ", title: "Jebakan 'Standar Dunia' yang Bikin Melarat, Apakah Kamu Termasuk?", duration: "14:30", views: "28K" },
     { id: "JyujEihA31M", title: "2 Kesalahan Fatal yang Bikin Pertolongan Allah Tertahan!", duration: "12:10", views: "35K" },
-    { id: "NVezVnpSm2Y", title: "Merasa Sulit Istiqomah? Ini Penyebabnya..", duration: "11:05", views: "20K" },
+    { id: "NVezVnpSm2Y", title: "Merasa Sulit Istiqomah? Ini Penyebab Utama & Solusinya", duration: "11:05", views: "20K" },
   ],
   "Podcast": [
+    { id: "N66lM8D8R2A", title: "Strategi Bertahan di Masa Krisis: Deep Talk bareng Pengusaha Sukses #BTWPODCAST66", duration: "52:15", views: "12K" },
     { id: "EzLNXDxN-Ro", title: "Mudik: Antara Panggilan Surga, Tuntutan Keluarga, dan Rekening yang Menangis #BTWPODCAST67", duration: "45:00", views: "100K" },
   ],
   "E-course": [
-    { title: "Beginner: buat kamu yang pemula mau belajar bisnis", locked: true, duration: "2h 30m" },
-    { title: "Intermediate: buat kamu yang udah paham kelas beginner", locked: true, duration: "3h 15m" },
-    { title: "Advanced: buat kamu yang udah siap scale up", locked: true, duration: "4h 00m" },
+    { title: "Beginner: buat Anda yang pemula mau belajar bisnis", locked: true, duration: "2h 30m" },
+    { title: "Intermediate: buat Anda yang udah paham kelas beginner", locked: true, duration: "3h 15m" },
+    { title: "Advanced: buat Anda yang udah siap scale up", locked: true, duration: "4h 00m" },
   ]
 };
 
-const CHANNEL_LINK = "https://www.youtube.com/channel/UCkTtWkZY0dL9NOl3Q3vXfSQ/";
+const CHANNEL_LINK = "https://www.youtube.com/@btwmistercatur/videos";
 
 const POLL_OPTIONS = [
   { name: "Deddy Corbuzier", percentage: 25 },
@@ -389,14 +396,14 @@ export default function Home() {
               ) : (
                 <>
                   <p className="text-gray-400 mb-8">
-                    Punya ide tamu atau topik menarik? Kirim saranmu di sini!
+                    Punya ide tamu atau topik menarik? Kirim saran Anda di sini!
                   </p>
                   <form onSubmit={handleSuggestionSubmit} className="space-y-4">
                     <input 
                       type="text" 
                       name="name"
                       required
-                      placeholder="Nama kamu" 
+                      placeholder="Nama Anda" 
                       className="w-full p-4 rounded-2xl bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-brand-yellow transition-colors"
                     />
                     <textarea 

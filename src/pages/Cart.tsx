@@ -1,16 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
-import { ShoppingBag, Trash2, Plus, Minus, ArrowLeft, Send } from 'lucide-react';
+import { ShoppingBag, Trash2, Plus, Minus, ArrowLeft, CreditCard } from 'lucide-react';
 import { useCart } from '../context/CartContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Cart() {
   const { cart, removeFromCart, updateQuantity, totalPrice, clearCart } = useCart();
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    address: ''
-  });
+  const navigate = useNavigate();
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('id-ID', {
@@ -20,59 +16,12 @@ export default function Cart() {
     }).format(price);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
   const handleCheckout = () => {
-    if (!formData.name || !formData.phone || !formData.address) {
-      alert('Silakan lengkapi data penerima terlebih dahulu');
-      return;
-    }
-
     if (cart.length === 0) {
       alert('Keranjang Anda masih kosong');
       return;
     }
-
-    let message = `Halo, saya ingin memesan:\n\n`;
-    cart.forEach(item => {
-      message += `- ${item.name}${item.size ? ` (Size: ${item.size})` : ''} x ${item.quantity} - ${formatPrice(item.price * item.quantity)}\n`;
-    });
-    message += `\nTotal: ${formatPrice(totalPrice)}\n\n`;
-    message += `Untuk pengiriman:\n`;
-    message += `Nama: ${formData.name}\n`;
-    message += `Nomor: ${formData.phone}\n`;
-    message += `Alamat: ${formData.address}`;
-
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/6285121249997?text=${encodedMessage}`;
-    
-    // GTM Purchase Event
-    if (typeof window !== 'undefined' && (window as any).dataLayer) {
-      (window as any).dataLayer.push({
-        event: 'purchase',
-        ecommerce: {
-          transaction_id: `T-${Date.now()}`,
-          value: totalPrice,
-          currency: 'IDR',
-          items: cart.map(item => ({
-            item_id: item.id,
-            item_name: item.name,
-            price: item.price,
-            item_variant: item.size,
-            quantity: item.quantity
-          }))
-        },
-        customer_info: {
-          name: formData.name,
-          phone: formData.phone
-        }
-      });
-    }
-
-    window.open(whatsappUrl, '_blank');
+    navigate('/checkout');
   };
 
   if (cart.length === 0) {
@@ -155,10 +104,10 @@ export default function Cart() {
             </button>
           </div>
 
-          {/* Checkout Form */}
+          {/* Checkout Summary */}
           <div className="lg:col-span-1">
             <div className="bg-brand-dark p-8 rounded-3xl border border-gray-800 sticky top-32">
-              <h2 className="text-2xl font-bold mb-8">Detail Pesanan</h2>
+              <h2 className="text-2xl font-bold mb-8">Ringkasan Belanja</h2>
               
               <div className="space-y-6 mb-8">
                 <div className="flex justify-between text-gray-400">
@@ -166,8 +115,8 @@ export default function Cart() {
                   <span>{formatPrice(totalPrice)}</span>
                 </div>
                 <div className="flex justify-between text-gray-400 border-b border-gray-800 pb-4">
-                  <span>Pengiriman</span>
-                  <span className="text-green-500">Dihitung saat chat</span>
+                  <span>Pajak</span>
+                  <span className="text-gray-500">Termasuk</span>
                 </div>
                 <div className="flex justify-between text-2xl font-black">
                   <span>Total</span>
@@ -175,53 +124,16 @@ export default function Cart() {
                 </div>
               </div>
 
-              <div className="space-y-4 mb-8">
-                <h3 className="font-bold text-gray-300">Data Penerima</h3>
-                <div>
-                  <label className="block text-xs text-gray-500 uppercase font-bold mb-2 ml-1">Nama Lengkap</label>
-                  <input 
-                    type="text" 
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    placeholder="Masukkan nama Anda"
-                    className="w-full bg-gray-800 border border-gray-700 rounded-2xl px-5 py-3 focus:outline-none focus:border-brand-yellow transition-all"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs text-gray-500 uppercase font-bold mb-2 ml-1">Nomor WhatsApp</label>
-                  <input 
-                    type="tel" 
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    placeholder="Contoh: 08123456789"
-                    className="w-full bg-gray-800 border border-gray-700 rounded-2xl px-5 py-3 focus:outline-none focus:border-brand-yellow transition-all"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs text-gray-500 uppercase font-bold mb-2 ml-1">Alamat Lengkap</label>
-                  <textarea 
-                    name="address"
-                    value={formData.address}
-                    onChange={handleInputChange}
-                    placeholder="Masukkan alamat pengiriman"
-                    rows={3}
-                    className="w-full bg-gray-800 border border-gray-700 rounded-2xl px-5 py-3 focus:outline-none focus:border-brand-yellow transition-all resize-none"
-                  />
-                </div>
-              </div>
-
               <button 
                 onClick={handleCheckout}
                 className="w-full bg-brand-yellow text-black py-5 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-white transition-all transform hover:scale-[1.02] shadow-xl"
               >
-                <Send className="w-5 h-5" />
-                Pesan via WhatsApp
+                <CreditCard className="w-5 h-5" />
+                Lanjut ke Pembayaran
               </button>
               
               <p className="text-center text-gray-500 text-xs mt-6">
-                Pesanan akan diteruskan ke WhatsApp admin untuk proses pembayaran dan pengiriman.
+                Amankan pesanan Anda sekarang. Checkout cepat & mudah.
               </p>
             </div>
           </div>
