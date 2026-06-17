@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { ShoppingBag, Check, ArrowRight } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
+import { getOptimizedImageUrl } from '../utils/image';
 
 export default function Merchandise() {
   const { addToCart, totalItems } = useCart();
@@ -155,17 +156,23 @@ export default function Merchandise() {
             <div key={item.id} className="bg-brand-dark rounded-3xl overflow-hidden border border-gray-800 hover:border-brand-yellow transition-all group flex flex-col">
               <div className="aspect-square overflow-hidden relative">
                 <img 
-                  src={item.img} 
+                  src={getOptimizedImageUrl(item.img, { width: 400 })} 
                   alt={item.name} 
                   className={`w-full h-full object-cover transition-all duration-500 ${item.imgHover ? 'group-hover:opacity-0' : 'group-hover:scale-110'}`} 
                   referrerPolicy="no-referrer" 
+                  width={400}
+                  height={400}
+                  loading="lazy"
                 />
                 {item.imgHover && (
                   <img 
-                    src={item.imgHover} 
+                    src={getOptimizedImageUrl(item.imgHover, { width: 400 })} 
                     alt={item.name} 
                     className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110 group-hover:scale-100" 
                     referrerPolicy="no-referrer" 
+                    width={400}
+                    height={400}
+                    loading="lazy"
                   />
                 )}
                 {item.oldPrice && (

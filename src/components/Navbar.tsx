@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, BookOpen, ShoppingBag, Play, Star } from 'lucide-react';
 import { cn } from '../utils/cn';
 import { useCart } from '../context/CartContext';
+import { getOptimizedImageUrl } from '../utils/image';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,12 +50,12 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link to="/" className="flex items-center gap-2 group">
               <img 
-                src="https://btwmistercatur.com/wp-content/uploads/2026/03/BTW-MISTER-CATUR-AND-FRIENDS-REV-2-1-scaled.png" 
+                src={getOptimizedImageUrl("https://btwmistercatur.com/wp-content/uploads/2026/03/BTW-MISTER-CATUR-AND-FRIENDS-REV-2-1-scaled.png", { width: 300 })} 
                 alt="BTW Mister Catur Logo" 
                 className="h-12 md:h-16 w-auto object-contain"
                 referrerPolicy="no-referrer"
-                width={240}
-                height={64}
+                width={300}
+                height={80}
               />
             </Link>
           </div>

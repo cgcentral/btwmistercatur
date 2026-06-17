@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Play, ArrowRight, Zap, Users, MessageSquare, Lock, Clock, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../utils/cn';
+import { getOptimizedImageUrl } from '../utils/image';
 
 const CATEGORIES = [
   "Rubrik Bisnis", 
@@ -107,12 +108,12 @@ export default function Home() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://btwmistercatur.com/wp-content/uploads/2026/03/AD-1-scaled.jpg" 
+            src={getOptimizedImageUrl("https://btwmistercatur.com/wp-content/uploads/2026/03/AD-1-scaled.jpg", { width: 1200, quality: 75 })} 
             alt="Studio background" 
             className="w-full h-full object-cover opacity-40"
             referrerPolicy="no-referrer"
-            width={1920}
-            height={1080}
+            width={1200}
+            height={675}
             loading="eager"
             {...{ fetchPriority: "high" }}
           />

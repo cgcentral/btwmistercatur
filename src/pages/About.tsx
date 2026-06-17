@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Target, Users, Zap, Award } from 'lucide-react';
+import { getOptimizedImageUrl } from '../utils/image';
 
 export default function About() {
   return (
@@ -88,10 +89,13 @@ export default function About() {
             >
               <div className="aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl border-8 border-white dark:border-gray-800 relative z-10">
                 <img 
-                  src="http://btwmistercatur.com/wp-content/uploads/2026/02/images_2722491769586762089.png" 
+                  src={getOptimizedImageUrl("http://btwmistercatur.com/wp-content/uploads/2026/02/images_2722491769586762089.png", { width: 500 })} 
                   alt="Mister Catur Profile" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
+                  width={500}
+                  height={625}
+                  loading="lazy"
                 />
               </div>
               {/* Decorative elements */}

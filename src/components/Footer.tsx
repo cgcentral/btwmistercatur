@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { PlaySquare, Instagram, Youtube, Twitter, MessageCircle, MapPin } from 'lucide-react';
+import { getOptimizedImageUrl } from '../utils/image';
 
 export default function Footer() {
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+  const mapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsMapLoaded(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    if (mapRef.current) observer.observe(mapRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <footer className="bg-white dark:bg-brand-darker border-t border-brand-blue/20 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -11,12 +29,12 @@ export default function Footer() {
             <div>
               <Link to="/" className="flex items-center gap-2 mb-6">
                 <img 
-                  src="https://btwmistercatur.com/wp-content/uploads/2026/03/BTW-MISTER-CATUR-AND-FRIENDS-REV-2-1-scaled.png" 
+                  src={getOptimizedImageUrl("https://btwmistercatur.com/wp-content/uploads/2026/03/BTW-MISTER-CATUR-AND-FRIENDS-REV-2-1-scaled.png", { width: 250 })} 
                   alt="BTW Mister Catur Logo" 
                   className="h-12 w-auto object-contain"
                   referrerPolicy="no-referrer"
-                  width={180}
-                  height={48}
+                  width={250}
+                  height={66}
                 />
               </Link>
               <p className="text-gray-600 dark:text-gray-400 max-w-sm mb-4 leading-relaxed">
@@ -60,17 +78,24 @@ export default function Footer() {
                 </a>
               </div>
             </div>
-            <div className="w-full h-48 lg:h-full min-h-[200px] rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm">
-              <iframe 
-                src="https://maps.google.com/maps?q=-6.2774031,106.7724926&t=&z=18&ie=UTF8&iwloc=&output=embed" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-                title="BTW Mister Catur Location"
-              ></iframe>
+            <div ref={mapRef} className="w-full h-48 lg:h-full min-h-[200px] rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm bg-gray-50 dark:bg-gray-900/30 flex items-center justify-center relative">
+              {isMapLoaded ? (
+                <iframe 
+                  src="https://maps.google.com/maps?q=-6.2774031,106.7724926&t=&z=18&ie=UTF8&iwloc=&output=embed" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="BTW Mister Catur Location"
+                ></iframe>
+              ) : (
+                <div className="flex flex-col items-center gap-2 p-6 text-center text-gray-400 dark:text-gray-500">
+                  <MapPin className="w-8 h-8 text-brand-yellow animate-bounce" />
+                  <span className="font-semibold text-xs tracking-wider uppercase">Loading Interactive Map...</span>
+                </div>
+              )}
             </div>
           </div>
 

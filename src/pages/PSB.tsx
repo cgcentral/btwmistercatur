@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { CheckCircle2, MessageCircle, ArrowRight, Star, Quote, HelpCircle, ShoppingBag } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import OrderOnlineEmbed from '../components/OrderOnlineEmbed';
+import { getOptimizedImageUrl } from '../utils/image';
 
 export default function PSB() {
   const features = [
@@ -148,10 +149,13 @@ export default function PSB() {
             >
               <div className="absolute inset-0 bg-brand-yellow/20 blur-[100px] rounded-full" />
               <img
-                src="http://btwmistercatur.com/wp-content/uploads/2026/02/images_8834891768483526954.jpg"
+                src={getOptimizedImageUrl("http://btwmistercatur.com/wp-content/uploads/2026/02/images_8834891768483526954.jpg", { width: 400 })}
                 alt="Buku Pulang Sebelum Berlari"
                 className="relative z-10 w-full max-w-sm mx-auto rounded-3xl shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500"
                 referrerPolicy="no-referrer"
+                width={400}
+                height={550}
+                loading="lazy"
               />
             </motion.div>
           </div>
@@ -200,10 +204,13 @@ export default function PSB() {
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <div className="w-full md:w-1/3">
               <img
-                src="http://btwmistercatur.com/wp-content/uploads/2026/03/BTW-MISTER-CATUR-AND-FRIENDS-REV-2-1-scaled.png"
+                src={getOptimizedImageUrl("http://btwmistercatur.com/wp-content/uploads/2026/03/BTW-MISTER-CATUR-AND-FRIENDS-REV-2-1-scaled.png", { width: 350 })}
                 alt="Mister Catur"
                 className="w-full grayscale hover:grayscale-0 transition-all duration-700 rounded-3xl"
                 referrerPolicy="no-referrer"
+                width={350}
+                height={98}
+                loading="lazy"
               />
             </div>
             <div className="w-full md:w-2/3">
