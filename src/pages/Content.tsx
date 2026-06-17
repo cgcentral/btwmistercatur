@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Play, ArrowRight, Zap, Users, MessageSquare, Lock, Clock, Eye, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../utils/cn';
+import { getOptimizedImageUrl } from '../utils/image';
 
 const CATEGORIES = [
   "Rubrik Bisnis", 
@@ -152,9 +153,7 @@ export default function Content() {
                       </div>
                     ) : (
                       <img 
-                        src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`} 
-                        srcSet={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg 320w, https://img.youtube.com/vi/${video.id}/hqdefault.jpg 480w`}
-                        sizes="(max-width: 640px) 320px, 480px"
+                        src={getOptimizedImageUrl(`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`, { width: 480, quality: 75 })} 
                         width={480}
                         height={360}
                         alt={video.title} 
@@ -162,14 +161,15 @@ export default function Content() {
                         referrerPolicy="no-referrer"
                         loading="lazy"
                         onError={(e) => {
-                          (e.target as HTMLImageElement).src = `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`;
+                          (e.target as HTMLImageElement).src = getOptimizedImageUrl(`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`, { width: 320 });
                         }}
                       />
                     )}
                     
                     {!video.locked && (
-                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                        <div className="w-14 h-14 bg-brand-yellow rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all">
+                      <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                        <div className="relative z-10 w-14 h-14 bg-brand-yellow rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-transform transition-opacity duration-300">
                           <Play className="w-6 h-6 text-black fill-black ml-1" />
                         </div>
                       </div>

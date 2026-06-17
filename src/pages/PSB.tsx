@@ -180,8 +180,15 @@ export default function PSB() {
                 transition={{ delay: i * 0.1 }}
                 className="p-8 bg-brand-dark rounded-3xl border border-gray-800 hover:border-brand-yellow/50 transition-all group"
               >
-                <div className="w-14 h-14 bg-brand-yellow/10 rounded-2xl flex items-center justify-center text-brand-yellow mb-6 group-hover:bg-brand-yellow group-hover:text-black transition-colors">
-                  <Star className="w-7 h-7" />
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center relative overflow-hidden mb-6">
+                  {/* Default State */}
+                  <div className="absolute inset-0 bg-brand-yellow/10 flex items-center justify-center text-brand-yellow transition-opacity duration-300 group-hover:opacity-0">
+                    <Star className="w-7 h-7" />
+                  </div>
+                  {/* Hover State - Composited Opacity */}
+                  <div className="absolute inset-0 bg-brand-yellow flex items-center justify-center text-black opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <Star className="w-7 h-7" />
+                  </div>
                 </div>
                 <h3 className="text-xl font-bold mb-4">{f.title}</h3>
                 <p className="text-gray-400 leading-relaxed">{f.desc}</p>

@@ -175,9 +175,7 @@ export default function Home() {
                     className="relative w-full h-full cursor-pointer group/btn"
                   >
                     <img 
-                      src="https://img.youtube.com/vi/0Ouxl_9hccM/sddefault.jpg" 
-                      srcSet="https://img.youtube.com/vi/0Ouxl_9hccM/hqdefault.jpg 480w, https://img.youtube.com/vi/0Ouxl_9hccM/sddefault.jpg 640w"
-                      sizes="(max-width: 1024px) 480px, 640px"
+                      src={getOptimizedImageUrl("https://img.youtube.com/vi/0Ouxl_9hccM/sddefault.jpg", { width: 640, quality: 75 })} 
                       width={640}
                       height={480}
                       alt="Siapa Mister Catur Video Thumbnail" 
@@ -185,8 +183,9 @@ export default function Home() {
                       loading="eager"
                       {...{ fetchPriority: "high" }}
                     />
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center transition-colors group-hover/btn:bg-black/30">
-                      <div className="w-16 h-16 rounded-full bg-brand-yellow flex items-center justify-center shadow-lg transition-transform duration-300 group-hover/btn:scale-110 shadow-brand-yellow/35">
+                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                      <div className="absolute inset-0 bg-black/10 transition-opacity duration-300 group-hover/btn:opacity-0 pointer-events-none" />
+                      <div className="relative z-10 w-16 h-16 rounded-full bg-brand-yellow flex items-center justify-center shadow-lg transition-transform duration-300 group-hover/btn:scale-110 shadow-brand-yellow/35">
                         <Play className="w-6 h-6 text-black fill-black ml-1" />
                       </div>
                     </div>
@@ -279,9 +278,7 @@ export default function Home() {
                         </div>
                       ) : (
                         <img 
-                          src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`} 
-                          srcSet={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg 320w, https://img.youtube.com/vi/${video.id}/hqdefault.jpg 480w`}
-                          sizes="(max-width: 640px) 320px, 480px"
+                          src={getOptimizedImageUrl(`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`, { width: 480, quality: 75 })} 
                           width={480}
                           height={360}
                           alt={video.title} 
@@ -289,14 +286,15 @@ export default function Home() {
                           referrerPolicy="no-referrer"
                           loading="lazy"
                           onError={(e) => {
-                            (e.target as HTMLImageElement).src = `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`;
+                            (e.target as HTMLImageElement).src = getOptimizedImageUrl(`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`, { width: 320 });
                           }}
                         />
                       )}
                       
                       {!video.locked && (
-                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                          <div className="w-14 h-14 bg-brand-yellow rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all">
+                        <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                          <div className="relative z-10 w-14 h-14 bg-brand-yellow rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-transform transition-opacity duration-300">
                             <Play className="w-6 h-6 text-black fill-black ml-1" />
                           </div>
                         </div>
