@@ -62,6 +62,7 @@ export default function Home() {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isHeroVideoPlaying, setIsHeroVideoPlaying] = useState(false);
 
   const handleVote = (optionName: string) => {
     if (!hasVoted) {
@@ -106,10 +107,12 @@ export default function Home() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="http://btwmistercatur.com/wp-content/uploads/2026/03/AD-1-scaled.jpg" 
+            src="https://btwmistercatur.com/wp-content/uploads/2026/03/AD-1-scaled.jpg" 
             alt="Studio background" 
             className="w-full h-full object-cover opacity-40"
             referrerPolicy="no-referrer"
+            loading="eager"
+            {...{ fetchPriority: "high" }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-brand-darker via-brand-darker/80 to-transparent" />
           {/* Blue glow accent */}
@@ -155,13 +158,33 @@ export default function Home() {
               className="relative hidden lg:block"
             >
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 aspect-video lg:aspect-[16/10] group bg-black">
-                <iframe
-                  src="https://www.youtube.com/embed/0Ouxl_9hccM?autoplay=0&rel=0"
-                  title="Siapa Mister Catur?"
-                  className="w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
+                {isHeroVideoPlaying ? (
+                  <iframe
+                    src="https://www.youtube.com/embed/0Ouxl_9hccM?autoplay=1&rel=0"
+                    title="Siapa Mister Catur?"
+                    className="w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                ) : (
+                  <div 
+                    onClick={() => setIsHeroVideoPlaying(true)}
+                    className="relative w-full h-full cursor-pointer group/btn"
+                  >
+                    <img 
+                      src="https://img.youtube.com/vi/0Ouxl_9hccM/maxresdefault.jpg" 
+                      alt="Siapa Mister Catur Video Thumbnail" 
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover/btn:scale-105"
+                      loading="eager"
+                      {...{ fetchPriority: "high" }}
+                    />
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center transition-colors group-hover/btn:bg-black/30">
+                      <div className="w-16 h-16 rounded-full bg-brand-yellow flex items-center justify-center shadow-lg transition-transform duration-300 group-hover/btn:scale-110 shadow-brand-yellow/35">
+                        <Play className="w-6 h-6 text-black fill-black ml-1" />
+                      </div>
+                    </div>
+                  </div>
+                )}
                 
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-6 pointer-events-none">
                   <div className="bg-brand-yellow text-black text-[10px] font-black px-3 py-1 rounded-full w-fit mb-2 uppercase tracking-wider">

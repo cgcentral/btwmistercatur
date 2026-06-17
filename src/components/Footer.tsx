@@ -11,10 +11,12 @@ export default function Footer() {
             <div>
               <Link to="/" className="flex items-center gap-2 mb-6">
                 <img 
-                  src="http://btwmistercatur.com/wp-content/uploads/2026/03/BTW-MISTER-CATUR-AND-FRIENDS-REV-2-1-scaled.png" 
+                  src="https://btwmistercatur.com/wp-content/uploads/2026/03/BTW-MISTER-CATUR-AND-FRIENDS-REV-2-1-scaled.png" 
                   alt="BTW Mister Catur Logo" 
                   className="h-12 w-auto object-contain"
                   referrerPolicy="no-referrer"
+                  width={180}
+                  height={48}
                 />
               </Link>
               <p className="text-gray-600 dark:text-gray-400 max-w-sm mb-4 leading-relaxed">

@@ -1,41 +1,68 @@
 <!doctype html>
 <html lang="id">
   <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5QQRCJWR');</script>
-    <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BTW Mister Catur</title>
+
+    <!-- Resource Hints & Critical Images Preloads -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://btwmistercatur.com">
+    <link rel="preconnect" href="https://img.youtube.com">
+    <link rel="preconnect" href="https://static.doubleclick.net">
+    
+    <!-- Preload Critical LCP image instantly at parsing step -->
+    <link rel="preload" as="image" href="https://btwmistercatur.com/wp-content/uploads/2026/03/AD-1-scaled.jpg" fetchpriority="high">
+    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '911463305050189');
-    fbq('track', 'PageView');
-    </script>
-    <!-- End Meta Pixel Code -->
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6X1CKGW3RL"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
-      gtag('config', 'G-6X1CKGW3RL');
+    <!-- Highly Optimized Deferral of Analytics and Tracking to Free Up Thread for FCP/LCP -->
+    <script>
+      (function() {
+        const loadTrackers = () => {
+          if (window.__trackersLoaded) return;
+          window.__trackersLoaded = true;
+
+          // 1. Google Tag Manager
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-5QQRCJWR');
+
+          // 2. Meta Pixel Code
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '911463305050189');
+          fbq('track', 'PageView');
+
+          // 3. Google tag (gtag.js)
+          const gt = document.createElement('script');
+          gt.src = "https://www.googletagmanager.com/gtag/js?id=G-6X1CKGW3RL";
+          gt.async = true;
+          document.head.appendChild(gt);
+          
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'G-6X1CKGW3RL');
+        };
+
+        // Load trackers on Page Idle/Load to prevent initial blocking
+        if (window.requestIdleCallback) {
+          window.requestIdleCallback(() => setTimeout(loadTrackers, 1000));
+        } else {
+          window.addEventListener('load', () => setTimeout(loadTrackers, 1500));
+        }
+      })();
     </script>
   </head>
   <body>
