@@ -152,12 +152,17 @@ export default function Content() {
                       </div>
                     ) : (
                       <img 
-                        src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`} 
+                        src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`} 
+                        srcSet={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg 320w, https://img.youtube.com/vi/${video.id}/hqdefault.jpg 480w`}
+                        sizes="(max-width: 640px) 320px, 480px"
+                        width={480}
+                        height={360}
                         alt={video.title} 
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         referrerPolicy="no-referrer"
+                        loading="lazy"
                         onError={(e) => {
-                          (e.target as HTMLImageElement).src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+                          (e.target as HTMLImageElement).src = `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`;
                         }}
                       />
                     )}

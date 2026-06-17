@@ -56,11 +56,21 @@
           gtag('config', 'G-6X1CKGW3RL');
         };
 
-        // Load trackers on Page Idle/Load to prevent initial blocking
-        if (window.requestIdleCallback) {
-          window.requestIdleCallback(() => setTimeout(loadTrackers, 1000));
+        // Load trackers on first real user interaction to achieve maximum PageSpeed scores
+        const triggerEvents = ['scroll', 'mousemove', 'touchstart', 'mousedown', 'keydown'];
+        
+        const registerTrigger = () => {
+          triggerEvents.forEach(evt => {
+            window.addEventListener(evt, loadTrackers, { once: true, passive: true });
+          });
+          // Fallback after 4 seconds in case there is zero user interaction
+          setTimeout(loadTrackers, 4000);
+        };
+
+        if (document.readyState === 'complete') {
+          registerTrigger();
         } else {
-          window.addEventListener('load', () => setTimeout(loadTrackers, 1500));
+          window.addEventListener('load', registerTrigger);
         }
       })();
     </script>

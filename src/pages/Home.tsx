@@ -111,6 +111,8 @@ export default function Home() {
             alt="Studio background" 
             className="w-full h-full object-cover opacity-40"
             referrerPolicy="no-referrer"
+            width={1920}
+            height={1080}
             loading="eager"
             {...{ fetchPriority: "high" }}
           />
@@ -172,7 +174,11 @@ export default function Home() {
                     className="relative w-full h-full cursor-pointer group/btn"
                   >
                     <img 
-                      src="https://img.youtube.com/vi/0Ouxl_9hccM/maxresdefault.jpg" 
+                      src="https://img.youtube.com/vi/0Ouxl_9hccM/sddefault.jpg" 
+                      srcSet="https://img.youtube.com/vi/0Ouxl_9hccM/hqdefault.jpg 480w, https://img.youtube.com/vi/0Ouxl_9hccM/sddefault.jpg 640w"
+                      sizes="(max-width: 1024px) 480px, 640px"
+                      width={640}
+                      height={480}
                       alt="Siapa Mister Catur Video Thumbnail" 
                       className="w-full h-full object-cover transition-transform duration-500 group-hover/btn:scale-105"
                       loading="eager"
@@ -272,12 +278,17 @@ export default function Home() {
                         </div>
                       ) : (
                         <img 
-                          src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`} 
+                          src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`} 
+                          srcSet={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg 320w, https://img.youtube.com/vi/${video.id}/hqdefault.jpg 480w`}
+                          sizes="(max-width: 640px) 320px, 480px"
+                          width={480}
+                          height={360}
                           alt={video.title} 
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                           referrerPolicy="no-referrer"
+                          loading="lazy"
                           onError={(e) => {
-                            (e.target as HTMLImageElement).src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+                            (e.target as HTMLImageElement).src = `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`;
                           }}
                         />
                       )}
