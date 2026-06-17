@@ -6,7 +6,19 @@ import {defineConfig, loadEnv} from 'vite';
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   return {
-    plugins: [react(), tailwindcss()],
+    plugins: [
+      react(), 
+      tailwindcss(),
+      {
+        name: 'optimize-css',
+        transformIndexHtml(html) {
+          return html.replace(
+            /<link rel="stylesheet" href="([^"]+?\.css)"\s*\/?>/g,
+            '<link rel="preload" href="$1" as="style" />\n    <link rel="stylesheet" href="$1" media="print" onload="this.media=\'all\'" />'
+          );
+        }
+      }
+    ],
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
     },

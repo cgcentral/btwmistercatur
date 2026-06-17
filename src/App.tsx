@@ -1,7 +1,6 @@
 import React, { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 
@@ -17,6 +16,9 @@ const PSB = lazy(() => import('./pages/PSB'));
 const PSB_FB = lazy(() => import('./pages/PSB_FB'));
 const Checkout = lazy(() => import('./pages/Checkout'));
 const OrderSuccess = lazy(() => import('./pages/OrderSuccess'));
+
+// Lazy load Footer below the fold to save vital initial chunk bytes
+const Footer = lazy(() => import('./components/Footer'));
 
 import { CartProvider } from './context/CartContext';
 
@@ -86,7 +88,9 @@ export default function App() {
               </Routes>
             </Suspense>
           </main>
-          <Footer />
+          <Suspense fallback={null}>
+            <Footer />
+          </Suspense>
         </div>
       </Router>
     </CartProvider>

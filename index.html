@@ -12,7 +12,55 @@
     <!-- Preload Critical LCP image instantly at parsing step -->
     <link rel="preload" as="image" href="https://images.weserv.nl/?url=https%3A%2F%2Fbtwmistercatur.com%2Fwp-content%2Fuploads%2F2026%2F03%2FAD-1-scaled.jpg&w=1200&output=webp&q=75" fetchpriority="high">
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Non-blocking Google Fonts loading to optimize performance -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" as="style" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+
+    <!-- Critical CSS: eliminates standard blank screen flash by loading background instantly -->
+    <style>
+      html, body {
+        background-color: #070913 !important;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        color: #f3f4f6;
+        font-family: 'Poppins', 'Montserrat', sans-serif;
+      }
+      #root {
+        background-color: #070913;
+        min-height: 100vh;
+      }
+      .initial-splash-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background-color: #070913;
+        transition: opacity 0.4s ease;
+      }
+      .initial-splash-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #FCD34D;
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: initial-spin 0.8s linear infinite;
+        margin-bottom: 16px;
+      }
+      @keyframes initial-spin {
+        to { transform: rotate(360deg); }
+      }
+      .initial-loading-text {
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        color: #FCD34D;
+      }
+    </style>
 
     <!-- Highly Optimized Deferral of Analytics and Tracking to Free Up Thread for FCP/LCP -->
     <script>
@@ -80,7 +128,12 @@
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=911463305050189&ev=PageView&noscript=1"
     /></noscript>
-    <div id="root"></div>
+    <div id="root">
+      <div class="initial-splash-container">
+        <div class="initial-splash-spinner"></div>
+        <div class="initial-loading-text">MEMUAT BTW...</div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
