@@ -1,31 +1,53 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { CheckCircle2, MessageCircle, ArrowRight, Star, Quote, HelpCircle, ShoppingBag } from 'lucide-react';
+import { CheckCircle2, MessageCircle, ArrowRight, Star, Quote, HelpCircle, ShoppingBag, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import OrderOnlineEmbed from '../components/OrderOnlineEmbed';
 import { getOptimizedImageUrl } from '../utils/image';
 
 export default function PSB() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  const graphicTestimonials = [
+    "http://btwmistercatur.com/wp-content/uploads/2026/06/Bosen-baca-buku-pengembangan-diri-yang-isinya-cuma-nyuruh-gas-pol-🛑Saatnya-baca-buku-yang-ber-1-1024x1024-1.webp",
+    "http://btwmistercatur.com/wp-content/uploads/2026/06/Bosen-baca-buku-pengembangan-diri-yang-isinya-cuma-nyuruh-gas-pol-🛑Saatnya-baca-buku-yang-ber-2-1024x1024-1.webp",
+    "http://btwmistercatur.com/wp-content/uploads/2026/06/Bosen-baca-buku-pengembangan-diri-yang-isinya-cuma-nyuruh-gas-pol-🛑Saatnya-baca-buku-yang-ber-1024x1024-1.webp",
+    "http://btwmistercatur.com/wp-content/uploads/2026/06/Bukan-sekadar-motivasi-tapi-panduan-jujur-untuk-menemukan-peran-yang-Allah-titipkan-pada-kita.-1024x1024-1.webp",
+    "http://btwmistercatur.com/wp-content/uploads/2026/06/Bukan-sekadar-motivasi-tapi-panduan-jujur-untuk-menemukan-peran-yang-Allah-titipkan-pada-kita.-1-1024x1024-1.webp",
+    "http://btwmistercatur.com/wp-content/uploads/2026/06/Buku-Pulang-Sebelum-Berlari-mengajak-kita-menata-hati-meluruskan-tujuan-dan-mengundang-rezeki-1024x1024-1.webp"
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % graphicTestimonials.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [graphicTestimonials.length]);
+
   const features = [
     {
-      title: "Visi & Peran Sejati",
-      desc: "Menemukan 'Jati Diri dari Langit'. Membedakan antara kostum (profesi) dan misi sejati yang Allah titipkan dalam hidup Anda."
+      title: "Panggung Peran (Jati Diri dari Langit)",
+      desc: "Menemukan peran sejati Anda sebagai 'Wayang' di bawah skenario Sang Dalang. Memisahkan antara 'kostum' profesi sementara dengan misi abadi yang sesungguhnya Allah titipkan."
     },
     {
-      title: "Mentalitas Anti-Gagal",
-      desc: "Belajar dari krisis finansial ratusan miliar hingga bangkit kembali. Mengubah setiap kegagalan menjadi hikmah dan anak tangga kesuksesan."
+      title: "Resiliensi Tingkat Tinggi",
+      desc: "Belajar mengurai hikmah di balik krisis keuangan ratusan miliar hingga bangkit tegak kembali. Strategi tulus menghadapi kegagalan sebagai bentuk didikan cinta dari Allah SWT."
     },
     {
       title: "Marketing & Branding Langit",
-      desc: "Strategi menjadi 'Top of Mind-nya Allah'. Bagaimana 'menjual diri' di hadapan Sang Pencipta agar setiap hajat Anda dikabulkan."
+      desc: "Rahasia masuk dalam daftar prioritas (Top of Mind) di hadapan Pencipta. Memasarkan niat tulus Anda melalui bakti orang tua (tiru kisah mulia Qais Al-Qarni) & sedekah tanpa tapi."
     },
     {
-      title: "Kekuatan Pikiran (Subconscious)",
-      desc: "Rahasia ilmiah di balik doa. Bagaimana pikiran bawah sadar mengendalikan 88% nasib Anda dan cara mengaturnya secara positif."
+      title: "Bahasa Tuhan Adalah Bahasa Rasa",
+      desc: "Aspek ilmiah di balik doa di dunia kuantum. Mengatur gelombang otak Epsilon (0.1 Hz) & Gamma agar perasaan dan keyakinan selaras demi menghindari do'a yang ter-cancel."
     },
     {
       title: "Seni Istiqomah (Gradual Increment)",
-      desc: "Bukan sekadar konsisten, tapi terus tumbuh. Teknik membangun kebiasaan baik sedikit demi sedikit (1%) hingga menjadi versi terbaik diri."
+      desc: "Mempelajari esensi Istiqomah sebagai 'Gradually Increment' (tumbuh naik bertahap 1% setiap hari). Bukan sekadar konsisten stagnan, melainkan ikhtiar dinamis melahirkan versi terbaik diri."
+    },
+    {
+      title: "Support System & Energi Berkah",
+      desc: "Mengapa Anda butuh lingkaran terdekat untuk bertawakal dengan benar? Meneladani keteguhan batin orang tua Putri Ariani dan ketegasan guru spiritual Sultan Muhammad Al-Fatih."
     }
   ];
 
@@ -211,22 +233,25 @@ export default function PSB() {
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <div className="w-full md:w-1/3">
               <img
-                src={getOptimizedImageUrl("http://btwmistercatur.com/wp-content/uploads/2026/03/BTW-MISTER-CATUR-AND-FRIENDS-REV-2-1-scaled.png", { width: 350 })}
-                alt="Mister Catur"
-                className="w-full grayscale hover:grayscale-0 transition-all duration-700 rounded-3xl"
+                src={getOptimizedImageUrl("http://btwmistercatur.com/wp-content/uploads/2026/06/images_2722491769586762089-1.webp", { width: 400 })}
+                alt="Logo Mister Catur"
+                className="w-full hover:scale-105 transition-all duration-500 rounded-3xl shadow-2xl border border-gray-800/80 bg-brand-dark/40"
                 referrerPolicy="no-referrer"
-                width={350}
-                height={98}
+                width={400}
+                height={400}
                 loading="lazy"
               />
             </div>
             <div className="w-full md:w-2/3">
-              <h2 className="text-3xl font-black mb-6">Pesan dari Penulis</h2>
+              <h2 className="text-3xl font-black mb-6">Mengenal Mister Catur</h2>
               <p className="text-lg text-gray-400 leading-relaxed mb-6">
-                "Buku ini tidak menawarkan rumus instan, tidak menjanjikan hidup tanpa luka, dan tidak menjual optimisme kosong. Yang saya tawarkan hanyalah satu hal: ruang untuk berhenti sejenak, merenung, dan mendengar kembali suara hati yang mungkin lama terabaikan." — <strong>Mister Catur</strong>
+                "Buku ini tidak menawarkan rumus instan, tidak menjanjikan hidup tanpa luka, dan tidak menjual optimisme kosong. Yang saya tawarkan hanyalah satu hal: ruang untuk berhenti sejenak, merenung, dan mendengar kembali suara hati yang mungkin lama terabaikan." — <strong>Muhamad Catur Gunandi</strong>
+              </p>
+              <p className="text-lg text-gray-400 leading-relaxed mb-6">
+                Sebelum membangun gurita bisnis di bawah naungan <strong>CGLINK</strong> dengan rekam jejak omzet ratusan miliar, <strong>Muhamad Catur Gunandi (Mister Catur)</strong> meniti karir profesional langka di raksasa korporasi dunia seperti <strong>Astra (DHTSU), Garuda Indonesia, Pertamina, Medco Energy</strong>, hingga menembus posisi berharga sebagai <strong>secondie di McKinsey</strong>.
               </p>
               <p className="text-lg text-gray-400 leading-relaxed font-bold text-brand-yellow">
-                Muhamad Catur Gunandi adalah pengusaha di balik CGLINK dengan rekam jejak omzet ratusan miliar, yang memilih berbagi makna melalui prinsip "Hidup Taat, Hidup Sehat, Hidup Manfaat".
+                Ayah dari tiga putri shalihah ini merangkum seluruh esensi perjuangan hidupnya dalam tiga pilar penuntun: "Hidup Taat, Hidup Sehat, Hidup Manfaat."
               </p>
             </div>
           </div>
@@ -260,6 +285,72 @@ export default function PSB() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Graphic Testimonial Slides Section */}
+      <section className="py-24 px-4 bg-brand-dark/40 border-t border-b border-gray-900">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-black mb-3 text-brand-yellow">Review & Rekomendasi</h2>
+            <p className="text-gray-400">Geser atau tunggu untuk melihat testimoni penuh makna tentang esensi isi buku.</p>
+          </div>
+
+          <div className="relative group">
+            {/* Main Visual Slider Container */}
+            <div className="overflow-hidden rounded-3xl border border-gray-800 bg-brand-dark/80 shadow-2xl relative aspect-square flex items-center justify-center">
+              {graphicTestimonials.map((imgUrl, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0 }}
+                  animate={{ 
+                    opacity: activeSlide === index ? 1 : 0,
+                    scale: activeSlide === index ? 1 : 0.95
+                  }}
+                  transition={{ duration: 0.4 }}
+                  className={`absolute inset-0 w-full h-full flex items-center justify-center ${activeSlide === index ? 'z-10' : 'z-0 pointer-events-none'}`}
+                >
+                  <img
+                    src={getOptimizedImageUrl(imgUrl, { width: 1024 })}
+                    alt={`Testimoni Alumnus ${index + 1}`}
+                    className="w-full h-full object-contain rounded-3xl"
+                    referrerPolicy="no-referrer"
+                    loading="lazy"
+                  />
+                </motion.div>
+              ))}
+
+              {/* Prev Button */}
+              <button
+                onClick={() => setActiveSlide((prev) => (prev - 1 + graphicTestimonials.length) % graphicTestimonials.length)}
+                className="absolute left-4 z-20 p-3 rounded-full bg-brand-dark/90 border border-gray-800 hover:bg-brand-yellow hover:text-brand-dark hover:scale-110 active:scale-95 transition-all text-white shadow-xl"
+                aria-label="Previous slide"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+
+              {/* Next Button */}
+              <button
+                onClick={() => setActiveSlide((prev) => (prev + 1) % graphicTestimonials.length)}
+                className="absolute right-4 z-20 p-3 rounded-full bg-brand-dark/90 border border-gray-800 hover:bg-brand-yellow hover:text-brand-dark hover:scale-110 active:scale-95 transition-all text-white shadow-xl"
+                aria-label="Next slide"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Slider Dots */}
+            <div className="flex justify-center gap-3 mt-8">
+              {graphicTestimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveSlide(index)}
+                  className={`h-3 rounded-full transition-all duration-300 ${activeSlide === index ? 'w-10 bg-brand-yellow' : 'w-3 bg-gray-700 hover:bg-gray-600'}`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>

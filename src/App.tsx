@@ -1,4 +1,4 @@
-import React, { useEffect, lazy, Suspense } from 'react';
+import React, { useEffect, useState, useRef, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ScrollToTop from './components/ScrollToTop';
@@ -18,7 +18,44 @@ const Checkout = lazy(() => import('./pages/Checkout'));
 const OrderSuccess = lazy(() => import('./pages/OrderSuccess'));
 
 // Lazy load Footer below the fold to save vital initial chunk bytes
-const Footer = lazy(() => import('./components/Footer'));
+const FooterReal = lazy(() => import('./components/Footer'));
+
+function LazyFooter() {
+  const [shouldRender, setShouldRender] = useState(false);
+  const placeholderRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setShouldRender(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '300px' }
+    );
+    const currentRef = placeholderRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+      observer.disconnect();
+    };
+  }, []);
+
+  if (!shouldRender) {
+    return <div ref={placeholderRef} className="min-h-[150px] w-full bg-[#070913]" />;
+  }
+
+  return (
+    <Suspense fallback={<div className="min-h-[150px] w-full bg-[#070913]" />}>
+      <FooterReal />
+    </Suspense>
+  );
+}
 
 import { CartProvider } from './context/CartContext';
 
@@ -88,9 +125,7 @@ export default function App() {
               </Routes>
             </Suspense>
           </main>
-          <Suspense fallback={null}>
-            <Footer />
-          </Suspense>
+          <LazyFooter />
         </div>
       </Router>
     </CartProvider>
