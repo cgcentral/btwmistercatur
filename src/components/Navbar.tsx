@@ -40,7 +40,7 @@ export default function Navbar() {
     { name: 'Video Content', path: '/content', icon: <Play className="w-4 h-4" />, desc: 'Tonton episode terbaru' },
     { name: 'E-Course', path: '/e-course', icon: <BookOpen className="w-4 h-4" />, desc: 'Belajar strategi catur' },
     { name: 'Merchandise', path: '/merchandise', icon: <ShoppingBag className="w-4 h-4" />, desc: 'Koleksi eksklusif' },
-    { name: 'Buku PSB', path: '/psb', icon: <Star className="w-4 h-4" />, desc: 'Pulang Sebelum Berlari' },
+    { name: 'Buku PSB', path: '/buku', icon: <Star className="w-4 h-4" />, desc: 'Pulang Sebelum Berlari' },
   ];
 
   return (

@@ -71,7 +71,7 @@ export default function Merchandise() {
 
   const handleAddToCart = (product: any) => {
     if (product.id === 'buku-1') {
-      window.location.href = '/psb';
+      window.location.href = '/buku';
       return;
     }
 
@@ -186,7 +186,7 @@ export default function Merchandise() {
                 
                 {item.id === "buku-1" && (
                   <Link 
-                    to="/psb" 
+                    to="/buku" 
                     className="text-xs text-brand-yellow hover:underline mb-4 flex items-center gap-1"
                   >
                     Lihat detail buku <ArrowRight className="w-3 h-3" />

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
@@ -120,8 +120,10 @@ export default function App() {
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/order-success" element={<OrderSuccess />} />
-                <Route path="/psb" element={<PSB />} />
-                <Route path="/psb-fb" element={<PSB_FB />} />
+                <Route path="/buku" element={<PSB />} />
+                <Route path="/buku-fb" element={<PSB_FB />} />
+                <Route path="/psb" element={<Navigate to="/buku" replace />} />
+                <Route path="/psb-fb" element={<Navigate to="/buku-fb" replace />} />
               </Routes>
             </Suspense>
           </main>
