@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { CheckCircle2, Copy, MessageCircle, ArrowRight, Download } from 'lucide-react';
 import { useLocation, Link, Navigate } from 'react-router-dom';
@@ -6,6 +6,76 @@ import { useLocation, Link, Navigate } from 'react-router-dom';
 export default function OrderSuccess() {
   const location = useLocation();
   const orderData = location.state?.orderData;
+
+  useEffect(() => {
+    if (orderData && typeof window !== 'undefined') {
+      const shippingCost = orderData.shippingMethod === 'regular' ? 15000 : 35000;
+      const totalAmount = orderData.totalPrice + shippingCost;
+
+      // Track Meta Pixel Purchase event
+      if ((window as any).fbq) {
+        (window as any).fbq('track', 'Purchase', {
+          value: totalAmount,
+          currency: 'IDR',
+          content_type: 'product',
+          contents: orderData.cartItems ? orderData.cartItems.map((item: any) => ({
+            id: item.id || 'book-psb',
+            quantity: item.quantity || 1,
+            item_price: item.price || orderData.totalPrice
+          })) : [{
+            id: 'book-psb',
+            quantity: 1,
+            item_price: orderData.totalPrice
+          }]
+        });
+      }
+
+      // Track GTM Conversion event
+      if ((window as any).dataLayer) {
+        (window as any).dataLayer.push({
+          event: 'purchase_success',
+          ecommerce: {
+            transaction_id: `ORDER_${Date.now()}`,
+            value: totalAmount,
+            currency: 'IDR',
+            shipping: shippingCost,
+            items: orderData.cartItems ? orderData.cartItems.map((item: any) => ({
+              item_id: item.id || 'book-psb',
+              item_name: item.title || 'Buku Pulang Sebelum Berlari',
+              price: item.price || orderData.totalPrice,
+              quantity: item.quantity || 1
+            })) : [{
+              item_id: 'book-psb',
+              item_name: 'Buku Pulang Sebelum Berlari',
+              price: orderData.totalPrice,
+              quantity: 1
+            }]
+          }
+        });
+      }
+
+      // Track GA4 conversion
+      if ((window as any).gtag) {
+        (window as any).gtag('event', 'purchase', {
+          transaction_id: `ORDER_${Date.now()}`,
+          value: totalAmount,
+          currency: 'IDR',
+          shipping: shippingCost,
+          items: orderData.cartItems ? orderData.cartItems.map((item: any) => ({
+            item_id: item.id || 'book-psb',
+            item_name: item.title || 'Buku Pulang Sebelum Berlari',
+            price: item.price || orderData.totalPrice,
+            quantity: item.quantity || 1
+          })) : [{
+            item_id: 'book-psb',
+            item_name: 'Buku Pulang Sebelum Berlari',
+            price: orderData.totalPrice,
+            quantity: 1
+          }]
+        });
+      }
+    }
+  }, [orderData]);
 
   if (!orderData) {
     return <Navigate to="/merchandise" replace />;
