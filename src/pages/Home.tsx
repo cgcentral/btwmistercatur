@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Play, ArrowRight, Zap, Users, MessageSquare, Lock, Clock, Eye } from 'lucide-react';
+import { Play, ArrowRight, Zap, Users, MessageSquare, Lock, Clock, Eye, Check, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../utils/cn';
 import { getOptimizedImageUrl } from '../utils/image';
@@ -211,6 +211,101 @@ export default function Home() {
                 </div>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* PSB Book Promo Section */}
+      <section id="psb-promo" className="py-16 md:py-24 bg-gradient-to-b from-brand-dark to-brand-darker border-t border-b border-gray-900 relative overflow-hidden">
+        {/* Decorative background blur */}
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-80 h-80 bg-brand-yellow/10 blur-[100px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-blue/10 blur-[130px] rounded-full pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="bg-gray-950/40 rounded-[32px] p-8 md:p-12 lg:p-16 border border-gray-800/80 hover:border-brand-yellow/20 transition-all duration-500">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              
+              {/* Image Column */}
+              <div className="lg:col-span-5 flex justify-center relative">
+                <div className="absolute inset-0 bg-brand-yellow/20 blur-[80px] rounded-full pointer-events-none scale-75" />
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95, rotate: -2 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: 2 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="relative z-10 max-w-[280px] md:max-w-[320px] shadow-2xl rounded-3xl overflow-hidden hover:rotate-0 transition-transform duration-500"
+                >
+                  <img
+                    src="http://btwmistercatur.com/wp-content/uploads/2026/02/images_8834891768483526954.jpg"
+                    alt="Buku Pulang Sebelum Berlari"
+                    className="w-full h-auto object-cover rounded-3xl"
+                    loading="lazy"
+                  />
+                </motion.div>
+              </div>
+
+              {/* Info Column */}
+              <div className="lg:col-span-7 space-y-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-yellow/10 border border-brand-yellow/20 text-brand-yellow font-black text-xs uppercase tracking-wider">
+                  🔥 BEST SELLER BOOK
+                </div>
+                
+                <h2 className="text-3xl md:text-5xl font-black text-white leading-tight">
+                  Buku <span className="text-brand-yellow">Pulang Sebelum Berlari</span>
+                </h2>
+                
+                <p className="text-lg text-gray-300 leading-relaxed">
+                  Menemukan Ketenangan, Makna Hidup, dan Keberlimpahan Melalui Prinsip <span className="text-brand-yellow font-bold">"Hidup Taat, Sehat, & Manfaat"</span>. Temukan jawaban atas kegelisahan hidup Anda dalam buku reflektif karya Mister Catur.
+                </p>
+
+                {/* Bullet Points */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                  <div className="flex gap-3 items-start">
+                    <div className="p-1 rounded-full bg-brand-yellow/10 border border-brand-yellow/20 text-brand-yellow shrink-0">
+                      <Check className="w-4 h-4" />
+                    </div>
+                    <span className="text-sm text-gray-300 font-medium">Tawakal & Pasrah Sejati (Wayang & Dalang)</span>
+                  </div>
+                  <div className="flex gap-3 items-start">
+                    <div className="p-1 rounded-full bg-brand-yellow/10 border border-brand-yellow/20 text-brand-yellow shrink-0">
+                      <Check className="w-4 h-4" />
+                    </div>
+                    <span className="text-sm text-gray-300 font-medium">Seni Istiqomah (Grow 1% Daily)</span>
+                  </div>
+                  <div className="flex gap-3 items-start">
+                    <div className="p-1 rounded-full bg-brand-yellow/10 border border-brand-yellow/20 text-brand-yellow shrink-0">
+                      <Check className="w-4 h-4" />
+                    </div>
+                    <span className="text-sm text-gray-300 font-medium">Marketing & Branding Langit</span>
+                  </div>
+                  <div className="flex gap-3 items-start">
+                    <div className="p-1 rounded-full bg-brand-yellow/10 border border-brand-yellow/20 text-brand-yellow shrink-0">
+                      <Check className="w-4 h-4" />
+                    </div>
+                    <span className="text-sm text-gray-300 font-medium font-sans">Bahasa Tuhan & Gelombang Otak</span>
+                  </div>
+                </div>
+
+                {/* Call to Actions */}
+                <div className="pt-6 flex flex-col sm:flex-row gap-4 items-center">
+                  <Link
+                    to="/buku"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-yellow hover:bg-brand-yellow-hover text-black font-black py-4 px-8 rounded-2xl transition-all transform hover:scale-[1.02] shadow-[0_0_20px_rgba(255,215,0,0.3)] text-center text-sm md:text-base"
+                  >
+                    <BookOpen className="w-5 h-5 shrink-0" />
+                    Pesan Buku Sekarang
+                  </Link>
+                  <Link
+                    to="/buku"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gray-900 hover:bg-gray-800 text-white font-bold py-4 px-8 rounded-2xl border border-gray-800 hover:border-gray-700 transition-all text-center text-sm md:text-base"
+                  >
+                    Lihat Detail & Testimoni
+                    <ArrowRight className="w-5 h-5 shrink-0" />
+                  </Link>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
       </section>
